@@ -53,7 +53,7 @@ app.controller("MainController", ['$scope', 'geoLoc', 'localWeather', function($
 		
 		// SVG weather icons.
 		$scope.glyph = function(){
-			var path = 'assets/img/';
+			var path = './assets/img/';
 			switch($scope.icon){
 				case 'clear-day' || 'clear-day':
 					return path + 'sunny.svg';
@@ -81,16 +81,16 @@ app.controller("MainController", ['$scope', 'geoLoc', 'localWeather', function($
 	var month = d.getMonth();
 	var url;
 	if(month == 11 || month < 2){
-		url = "url('assets/img/bg-3.jpg')";
+		url = "url('./assets/img/bg-3.jpg')";
 	}
 	else if(month > 1 && month < 5){
-		url = "url('assets/img/bg-4.jpg')";
+		url = "url('./assets/img/bg-4.jpg')";
 	}
 	else if(month > 4 && month < 8){
-		url = "url('assets/img/bg-1.jpg')";
+		url = "url('./assets/img/bg-1.jpg')";
 	}
 	else if(month > 7 && month < 12){
-		url = "url('assets/img/bg-2.jpg')";
+		url = "url('./assets/img/bg-2.jpg')";
 	}
 	document.body.style.backgroundImage = url;
 

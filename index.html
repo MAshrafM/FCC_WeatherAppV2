@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LocalWeather</title>
-  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/main.css">
 </head>
 <body ng-controller="MainController">
 
@@ -20,7 +20,7 @@
 			<div class="main">
 				<div class="weather-icon" ng-if="icon" ng-include="glyph()"></div>
 				<div class="weather-data"><span ng-if="weather">{{ degree() }}</span></div>
-				<div class="convert" ng-click="degC = !degC "><img src="/assets/img/light.png" height="30px" /></div>
+				<div class="convert" ng-click="degC = !degC "><img src="./assets/img/light.png" height="30px" /></div>
 			</div>
 			
 			<div class="foot">
@@ -33,6 +33,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
-<script src="/assets/js/app.js"></script>
+<script src="./assets/js/app.js"></script>
 </body>
 </html>
