@@ -5,13 +5,21 @@ var app = angular.module("weatherApp", ["ngResource"]);
 
 // Service to fetch geolocation
 app.service('geoLoc', ["$resource", function($resource){
-	return $resource('http://ip-api.com/json', null, {
+	return $resource('https://www.geoip-db.com/json', null, {
 		query:{
 			method: 'GET',
 			isArray: false
 		}
 	});
 }]);
+// app.service('geoLoc', ["$q", "$window", function($q, $window){
+	// var deferred = $q.defer();
+	// $window.navigator.geolocation.getCurrentPosition(function(position){
+        // deferred.resolve(position);
+    // });
+	// return deferred.promise;
+// }]);
+
 
 // Service to fetch weather data
 app.service('localWeather', ["$resource", "geoLoc", function($resource, geoLoc){
@@ -28,11 +36,16 @@ app.service('localWeather', ["$resource", "geoLoc", function($resource, geoLoc){
 // Main Controller
 app.controller("MainController", ['$scope', 'geoLoc', 'localWeather', function($scope, geoLoc, localWeather){
 		// Query for the geolocation
+		//geoLoc.then(function(data){
 		geoLoc.query().$promise.then(function(data){
-			$scope.lat = data.lat;
-			$scope.lon = data.lon;
+			//$scope.lat = data.coords.latitude;
+			//$scope.lon = data.coords.longitude;
+			$scope.lat = data.latitude;
+			$scope.lon = data.longitude;
+			console.log($scope.lat);
+			console.log($scope.lon);
 			$scope.city = data.city;
-			$scope.country = data.country;
+			$scope.country = data.country_name;
 			// from geolocation get Weather data
 			localWeather.getLocal($scope.lat, $scope.lon).query().$promise.then(function(response){
 				$scope.weather = response.currently.temperature.toFixed(2);
