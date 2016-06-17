@@ -1,0 +1,16 @@
+{
+  "name": "WeatherApp",
+  "version": "2.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "WeatherApp": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MAshraf",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.12.12",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.1"
+  }
+}

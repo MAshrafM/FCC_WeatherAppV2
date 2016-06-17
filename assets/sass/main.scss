@@ -1,0 +1,116 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+@font-face{
+	font-family: 'Aller';
+	src: url('/assets/fonts/Aller.ttf');
+}
+$diamond-size : 400px;
+$bubble-size: 120px;
+
+body{
+	margin: 0px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+}
+.diamond{
+		height: $diamond-size;
+		width: $diamond-size;
+		transform: rotate(45deg);
+		background-color: rgba(204, 102, 0, 0.75);
+		position: fixed;
+		left: 50%;
+		top: 50%;
+		margin-top: -0.5* $diamond-size;
+		margin-left: -0.5* $diamond-size;
+		box-shadow: 2px 2px 2px 3px rgba(0,0,0,0.2);
+			
+}
+.container{
+	height: $diamond-size;
+	width: $diamond-size;
+	text-align: center;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin-top: -0.5* $diamond-size;
+	margin-left: -0.5* $diamond-size;
+
+	.top, .main, .foot{
+		text-align: center;
+	}
+	
+	.top{
+		padding-top:5px;
+		color: white;
+		font-family: 'Aller', 'Open Sans', sans-serif;
+		h2{
+			margin-bottom: 0px;
+		}
+	}
+	
+	.foot{
+		font-family: 'Aller','Open Sans', sans-serif;
+		color: white;
+		h2{
+			margin-bottom: 0px;
+		}
+		p{
+			margin-top: 0px;
+		}
+	}
+	
+	.main{
+		width: 330px;
+		margin: 65px auto 25px auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: relative;
+		
+		.weather-icon, .weather-data{
+			width: $bubble-size;
+			height: $bubble-size;
+			border-radius: 50%;
+			background-color: rgba(255,255,255,0.5);
+		}
+		.weather-icon{  
+			svg{
+				width: 75px;
+				height: 100%;
+			}
+			path{
+				fill: #333;
+			}
+		}
+		
+		.weather-data{
+			font-family: 'Aller', 'Open Sans', sans-serif;
+			font-size: 46px;
+			color: #333;
+			line-height:120px;
+		}
+		
+		.convert{
+			width: 0.25* $bubble-size;
+			height: 0.25* $bubble-size;
+			background-color: rgba(255,255,255,1);
+			border-radius: 50%;
+			position: absolute;
+			right: -40px;
+			top: 45px;
+			cursor: pointer;
+			
+			&:hover{
+				opacity: 0.7;
+			}
+		}
+		
+		@media screen and (max-width: 420px){
+			.convert{
+				right: 125px;
+			}
+		}
+	}
+}
+

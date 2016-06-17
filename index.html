@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="weatherApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>LocalWeather</title>
+
+  
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body ng-controller="MainController">
+
+	<main>
+		<div class="diamond"></div>
+		<div class="container">
+			<div class="top">
+				<h2> Weather App </h2>
+				<em>from forcast.io</em>
+			</div>
+			
+			<div class="main">
+				<div class="weather-icon" ng-if="icon" ng-include="glyph()"></div>
+				<div class="weather-data"><span ng-if="weather">{{ degree() }}</span></div>
+				<div class="convert" ng-click="degC = !degC "><img src="/assets/img/light.png" height="30px" /></div>
+			</div>
+			
+			<div class="foot">
+				<h2> Geo Location </h2>
+				<p> {{ city }}, {{ country }} </p>
+			</div>
+		</div>
+	</main>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
+<script src="/assets/js/app.js"></script>
+</body>
+</html>

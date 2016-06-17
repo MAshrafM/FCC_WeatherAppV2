@@ -1,0 +1,84 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+@font-face {
+  font-family: 'Aller';
+  src: url("/assets/fonts/Aller.ttf"); }
+
+body {
+  margin: 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed; }
+
+.diamond {
+  height: 400px;
+  width: 400px;
+  transform: rotate(45deg);
+  background-color: rgba(204, 102, 0, 0.75);
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-top: -200px;
+  margin-left: -200px;
+  box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.2); }
+
+.container {
+  height: 400px;
+  width: 400px;
+  text-align: center;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-top: -200px;
+  margin-left: -200px; }
+  .container .top, .container .main, .container .foot {
+    text-align: center; }
+  .container .top {
+    padding-top: 5px;
+    color: white;
+    font-family: 'Aller', 'Open Sans', sans-serif; }
+    .container .top h2 {
+      margin-bottom: 0px; }
+  .container .foot {
+    font-family: 'Aller','Open Sans', sans-serif;
+    color: white; }
+    .container .foot h2 {
+      margin-bottom: 0px; }
+    .container .foot p {
+      margin-top: 0px; }
+  .container .main {
+    width: 330px;
+    margin: 65px auto 25px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; }
+    .container .main .weather-icon, .container .main .weather-data {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5); }
+    .container .main .weather-icon svg {
+      width: 75px;
+      height: 100%; }
+    .container .main .weather-icon path {
+      fill: #333; }
+    .container .main .weather-data {
+      font-family: 'Aller', 'Open Sans', sans-serif;
+      font-size: 46px;
+      color: #333;
+      line-height: 120px; }
+    .container .main .convert {
+      width: 30px;
+      height: 30px;
+      background-color: white;
+      border-radius: 50%;
+      position: absolute;
+      right: -40px;
+      top: 45px;
+      cursor: pointer; }
+      .container .main .convert:hover {
+        opacity: 0.7; }
+    @media screen and (max-width: 420px) {
+      .container .main .convert {
+        right: 125px; } }
