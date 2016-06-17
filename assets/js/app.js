@@ -21,7 +21,7 @@ app.service('localWeather', ["$resource", "geoLoc", function($resource, geoLoc){
 	var API = "ca67ce55c79f10f3323455777752623c/";
 	// depend on geolocation latitude and longitude
 	this.getLocal = function(lat,lon){
-		return $resource(url+API+lat+","+lon+, null,{query:{method: "GET", isArray:false}});
+		return $resource(url+API+lat+","+lon, null,{query:{method: "GET", isArray:false}});
 	};
 }]);
 
