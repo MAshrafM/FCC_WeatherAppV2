@@ -3,8 +3,7 @@
 
 var app = angular.module("weatherApp", ["ngResource"]);
 
-
-
+// Service to fetch geolocation
 app.service('geoLoc', ["$resource", function($resource){
 	return $resource('http://ip-api.com/json', null, {
 		query:{
@@ -14,33 +13,34 @@ app.service('geoLoc', ["$resource", function($resource){
 	});
 }]);
 
+// Service to fetch weather data
 app.service('localWeather', ["$resource", "geoLoc", function($resource, geoLoc){
+	//base url
 	var url = "https://api.forecast.io/forecast/";
+	// api key put in .env
 	var API = "ca67ce55c79f10f3323455777752623c/";
-	
+	// depend on geolocation latitude and longitude
 	this.getLocal = function(lat,lon){
 		return $resource(url+API+lat+","+lon, null,{query:{method: "GET", isArray:false}});
 	};
 }]);
 
-
+// Main Controller
 app.controller("MainController", ['$scope', 'geoLoc', 'localWeather', function($scope, geoLoc, localWeather){
+		// Query for the geolocation
 		geoLoc.query().$promise.then(function(data){
 			$scope.lat = data.lat;
 			$scope.lon = data.lon;
 			$scope.city = data.city;
 			$scope.country = data.country;
-			console.log($scope.lat);	
-			console.log($scope.lon);
+			// from geolocation get Weather data
 			localWeather.getLocal($scope.lat, $scope.lon).query().$promise.then(function(response){
 				$scope.weather = response.currently.temperature.toFixed(2);
 				$scope.icon = response.currently.icon;
-				console.log($scope.weather);
-				console.log($scope.icon);
 			});
 		});
-
-		$scope.degc = true;
+		// start from Celsius.
+		// convert base. Celsius to Fahrenheit 
 		$scope.degree = function showDegree(){
 			if($scope.degC){
 				return Math.floor($scope.weather) + '\u00b0F';
@@ -51,6 +51,7 @@ app.controller("MainController", ['$scope', 'geoLoc', 'localWeather', function($
 			}
 		}
 		
+		// SVG weather icons.
 		$scope.glyph = function(){
 			var path = 'assets/img/';
 			switch($scope.icon){
@@ -74,7 +75,8 @@ app.controller("MainController", ['$scope', 'geoLoc', 'localWeather', function($
 					break;
 			}
 		};
-		
+	
+	// change background image depending on the season.
 	var d = new Date();
 	var month = d.getMonth();
 	var url;
