@@ -13,7 +13,7 @@ app.service('geoLoc', ["$q", "$window", function($q, $window){
 }]);
 
 app.service('revLoc', ["$resource", function($resource){
-	var url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=";
+	var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=";
 	var call = "&sensor=false";
 	
 	this.revLocal = function(lat, lon){
