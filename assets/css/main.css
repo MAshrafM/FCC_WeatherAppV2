@@ -10,6 +10,41 @@ body {
   background-position: center center;
   background-attachment: fixed; }
 
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+.rotating {
+  -webkit-animation: rotating 5s linear infinite;
+  -moz-animation: rotating 5s linear infinite;
+  -ms-animation: rotating 5s linear infinite;
+  -o-animation: rotating 5s linear infinite;
+  animation: rotating 5s linear infinite; }
+
 .diamond {
   height: 400px;
   width: 400px;
@@ -22,7 +57,7 @@ body {
   margin-left: -200px;
   box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.2); }
 
-.container {
+#container {
   height: 400px;
   width: 400px;
   text-align: center;
@@ -30,45 +65,46 @@ body {
   left: 50%;
   top: 50%;
   margin-top: -200px;
-  margin-left: -200px; }
-  .container .top, .container .main, .container .foot {
+  margin-left: -200px;
+  display: none; }
+  #container .top, #container .main, #container .foot {
     text-align: center; }
-  .container .top {
+  #container .top {
     padding-top: 5px;
     color: white;
     font-family: 'Aller', 'Open Sans', sans-serif; }
-    .container .top h2 {
+    #container .top h2 {
       margin-bottom: 0px; }
-  .container .foot {
+  #container .foot {
     font-family: 'Aller','Open Sans', sans-serif;
     color: white; }
-    .container .foot h2 {
+    #container .foot h2 {
       margin-bottom: 0px; }
-    .container .foot p {
+    #container .foot p {
       margin-top: 0px; }
-  .container .main {
+  #container .main {
     width: 330px;
     margin: 65px auto 25px auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative; }
-    .container .main .weather-icon, .container .main .weather-data {
+    #container .main .weather-icon, #container .main .weather-data {
       width: 120px;
       height: 120px;
       border-radius: 50%;
       background-color: rgba(255, 255, 255, 0.5); }
-    .container .main .weather-icon svg {
+    #container .main .weather-icon svg {
       width: 75px;
       height: 100%; }
-    .container .main .weather-icon path {
+    #container .main .weather-icon path {
       fill: #333; }
-    .container .main .weather-data {
+    #container .main .weather-data {
       font-family: 'Aller', 'Open Sans', sans-serif;
       font-size: 46px;
       color: #333;
       line-height: 120px; }
-    .container .main .convert {
+    #container .main .convert {
       width: 30px;
       height: 30px;
       background-color: white;
@@ -77,8 +113,8 @@ body {
       right: -40px;
       top: 45px;
       cursor: pointer; }
-      .container .main .convert:hover {
+      #container .main .convert:hover {
         opacity: 0.7; }
     @media screen and (max-width: 420px) {
-      .container .main .convert {
+      #container .main .convert {
         right: 125px; } }
