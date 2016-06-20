@@ -23,7 +23,7 @@ app.service('revLoc', ["$resource", function($resource){
 // Service to fetch weather data
 app.service('localWeather', ["$resource", function($resource){
 	//base url
-	var url = "https://api.forecast.io/forecast/";
+	var url = "http://cors.io/?u=https://api.forecast.io/forecast/";
 	// api key put in .env
 	var API = "ca67ce55c79f10f3323455777752623c/";
 	// depend on geolocation latitude and longitude
