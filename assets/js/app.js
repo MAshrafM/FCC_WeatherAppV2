@@ -26,9 +26,12 @@ app.service('localWeather', ["$resource", function($resource){
 	var url = "https://api.forecast.io/forecast/";
 	// api key put in .env
 	var API = "ca67ce55c79f10f3323455777752623c/";
+	var callback = "?callback=?"
 	// depend on geolocation latitude and longitude
 	this.getLocal = function(lat,lon){
-		return $resource(url+API+lat+","+lon, null,{query:{method: "GET", isArray:false}});
+		return $resource(url+API+lat+","+lon, null,{
+			jsonpquery: {method: 'JSONP',  params: {callback: 'JSON_CALLBACK'}}
+		});
 	};
 }]);
 
@@ -40,7 +43,7 @@ app.controller("MainController", ['$scope', 'geoLoc', 'localWeather', 'revLoc', 
 			$scope.lon = data.coords.longitude;
 
 			// from geolocation get Weather data
-			localWeather.getLocal($scope.lat, $scope.lon).query().$promise.then(function(response){
+			localWeather.getLocal($scope.lat, $scope.lon).jsonpquery().$promise.then(function(response){
 				$scope.weather = response.currently.temperature.toFixed(2);
 				$scope.icon = response.currently.icon;
 				document.getElementById("container").style.display="block";
